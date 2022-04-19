@@ -1,0 +1,124 @@
+// 415 BAZA STYLE SHEET
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+
+.calc{
+  box-shadow: 5px 4px 3px #3c354a;
+
+  margin: 50px auto;
+  width: 300px;
+  height: 480px;
+  background: burlywood;
+  border-radius: 20px;
+  color: aliceblue;
+  font-family: "Roboto", serif;
+  padding: 18px;
+  border: gray;
+  .screen{
+    box-shadow: inset 2px 2px #998265;
+    background: #333333;
+    border-radius: 10px;
+    margin-bottom: 26px;
+
+    grid-auto-flow: column;
+    height: 86px;
+    //display: flex;
+    //flex-direction: column;
+    align-items: end;
+    //margin-right: 10px ;
+    grid-template:
+    "context__screen"
+    "modal__screen";
+    .screen__top{
+      display: flex;
+      .context__screen{
+        margin-top: 10px;
+        color: #998265;
+        margin-left: 13px;
+      }
+    }
+
+    .screen__bottom{
+      display: flex;
+      .modal__screen{
+        width: 290px;
+        text-align: end;
+        font-size: 46px;
+        transition-duration: 0.3s;
+        color: #c6ae9e;
+        &:hover{
+          color: coral;
+        }
+        &:active{
+          color: #333333;
+        }
+      }
+    }
+  }
+  .BAZA{
+    display: flex;
+    width: 290px;
+    height: 65px;
+    align-items: end;
+    justify-content: end;
+    font-family: 'Square Peg', cursive;
+    font-size: 32px;
+    transition-duration: 1s;
+    transition-property: color;
+
+    color: burlywood;
+    &:hover{
+      color: #998265;
+    }
+  }
+}
+
+.btn{
+  font-weight:bold;
+  box-shadow: 1px 2px 0 #3c354a;
+  transition-duration: 0.2s;
+
+  width: 55px;
+  height: 55px;
+  background-color: cadetblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  font-size: 1.5rem;
+  &:hover{
+    filter: brightness(130%);
+    font-size: 1.6rem;
+    color: lightgoldenrodyellow;
+    //box-shadow: 1px 1px 0 #3c354a;
+    cursor: pointer;
+  }
+  &:active{
+    filter: brightness(90%);
+    box-shadow: inset 0.1px 0.2px #3c354a;
+  }
+  &.orange__font{
+    background: coral;
+  }
+  &.grey__font{
+    background: #dad2cc;
+    color: black;
+  }
+  &.zero{
+    grid-area: zero;
+    width: 100%;
+  }
+}
+
+.buttons{
+  display: grid;
+  grid-template:
+  "ac p-m percent division"
+  "seven eight nine mp"
+  "fout five six minus"
+  "one two three plus"
+  "zero zero dot eq";
+  grid-gap: 7px;
+  justify-items: center;
+}
