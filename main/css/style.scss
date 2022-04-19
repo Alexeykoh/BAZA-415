@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
 
+*body{
+  background: beige;
+}
+
 .calc{
   box-shadow: 5px 4px 3px #3c354a;
 
@@ -11,7 +15,7 @@
   height: 480px;
   background: burlywood;
   border-radius: 20px;
-  color: aliceblue;
+  color: #fff0f4;
   font-family: "Roboto", serif;
   padding: 18px;
   border: gray;
