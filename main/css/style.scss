@@ -18,9 +18,7 @@ $mobile-small: 320px - 1px;
 @mixin media-mobile {
   @media (max-width: $mobile-big-width) {@content}
 }
-@mixin media-mobilesmall {
-  @media (max-width: $mobile-small-width) {@content}
-}
+
 
 
 
