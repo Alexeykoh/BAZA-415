@@ -5,7 +5,7 @@ let finish = false;
 
 const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 const action = ['-', '+', 'X', '/'];
-const special = ['+/-', '%'];
+// const special = ['+/-', '%'];
 
 
 //screen
@@ -31,18 +31,18 @@ function remNumber () {
     if (a !== '' && b === ''){
         a = a.substring(0, a.length-1)
         out.textContent = a;
-        console.log('text', a, sign, b)
+        console.log(a+" "+sign+" "+b+" "+finish)
     }
     if (a !== '' && b !== ''){
         b = b.substring(0, b.length-1)
         out.textContent = b;
-        console.log('text', a, sign, b)
+        console.log(a+" "+sign+" "+b+" "+finish)
     }
     if (a === ''){
         a = 0
         allClear();
     }
-    console.log('text', a, sign, b)
+    console.log(a+" "+sign+" "+b+" "+finish)
     context.textContent = a+" "+sign+" "+b;
 }
 
@@ -60,19 +60,27 @@ document.querySelector('.buttons').onclick = (event) => {
 
     if (digit.includes(key)) {
         if ( b === '' && sign === ''){
-            a += key;
+            if (a.length <= 10 ){
+                a += key;
+            }
             out.textContent = a;
             context.textContent = a+" "+sign+" "+b;
+            console.log(a+" "+sign+" "+b+" "+finish)
         }
         else if (a !== '' && b !== '' && finish){
-            b = key;
+            b += key;
             finish = false
             out.textContent = b;
+            context.textContent = a+" "+sign+" "+b;
+            console.log(a+" "+sign+" "+b+" "+finish)
         }
         else {
-            b += key;
+            if (b.length <= 10 ){
+                b += key;
+            }
             out.textContent = b;
             context.textContent = a+" "+sign+" "+b;
+            console.log(a+" "+sign+" "+b+" "+finish)
         }
     }
 
@@ -111,7 +119,7 @@ document.querySelector('.buttons').onclick = (event) => {
         switch (sign){
             case '/':
                 if (b === 0 || b === '' || b === '0'){
-                    console.log('govno')
+                    console.log('govno', finish)
                     out.textContent = 0;
                     context.textContent = 0;
                     result = 0;
@@ -122,8 +130,11 @@ document.querySelector('.buttons').onclick = (event) => {
                 }
         }
         finish = true;
-        out.textContent = result;
-        console.log( a, sign, b, ' - result: ', result)
+        if (result.toString().length >= 10){
+            out.textContent = (result.toString().substring(0, 10)+"...")
+        } else{out.textContent = result}
+
+        console.log( a, sign, b, ' - result: ', result, finish)
         a = result;
 
         b = '';

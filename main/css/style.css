@@ -65,6 +65,11 @@
 .calc .BAZA:hover {
   color: #998265;
 }
+@media (max-width: 1023px) {
+  .calc .BAZA:active {
+    color: #998265;
+  }
+}
 
 .btn {
   font-weight: bold;
@@ -84,6 +89,11 @@
   font-size: 1.6rem;
   color: lightgoldenrodyellow;
   cursor: pointer;
+}
+@media (max-width: 1023px) {
+  .btn:hover {
+    filter: brightness(100%);
+  }
 }
 .btn:active {
   filter: brightness(90%);

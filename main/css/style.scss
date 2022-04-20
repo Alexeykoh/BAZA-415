@@ -3,6 +3,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
 
+$content-width: 1024px - 1px;
+$tablet-width: 768px - 1px;
+$mobile-big-width: 425px - 1px;
+$mobile-small: 320px - 1px;
+
+//Queries
+@mixin media-laptop {
+  @media (max-width: $content-width) {@content}
+}
+@mixin media-tablet {
+  @media (max-width: $tablet-width) {@content}
+}
+@mixin media-mobile {
+  @media (max-width: $mobile-big-width) {@content}
+}
+@mixin media-mobilesmall {
+  @media (max-width: $mobile-small-width) {@content}
+}
+
+
+
 *body{
   background: beige;
 }
@@ -75,6 +96,11 @@
     &:hover{
       color: #998265;
     }
+    @include media-laptop{
+      &:active{
+        color: #998265;
+      }
+    }
   }
 }
 
@@ -93,6 +119,9 @@
   font-size: 1.5rem;
   &:hover{
     filter: brightness(130%);
+    @include media-laptop{
+      filter: brightness(100%);
+    }
     font-size: 1.6rem;
     color: lightgoldenrodyellow;
     //box-shadow: 1px 1px 0 #3c354a;
