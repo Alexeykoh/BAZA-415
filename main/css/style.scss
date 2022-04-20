@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tourney:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tourney:wght@900&display=swap');
 
 $content-width: 1024px - 1px;
 $tablet-width: 768px - 1px;
@@ -27,7 +29,7 @@ $mobile-small: 320px - 1px;
 }
 
 .calc{
-  box-shadow: 5px 4px 3px #3c354a;
+  box-shadow: 8px 6px 3px #3c354a;
 
   margin: 50px auto;
   width: 300px;
@@ -43,13 +45,9 @@ $mobile-small: 320px - 1px;
     background: #333333;
     border-radius: 10px;
     margin-bottom: 26px;
-
     grid-auto-flow: column;
     height: 86px;
-    //display: flex;
-    //flex-direction: column;
     align-items: end;
-    //margin-right: 10px ;
     grid-template:
     "context__screen"
     "modal__screen";
@@ -59,6 +57,8 @@ $mobile-small: 320px - 1px;
         margin-top: 10px;
         color: #998265;
         margin-left: 13px;
+        font-family: 'Tourney', cursive;
+        font-weight: 900;
       }
     }
 
@@ -70,6 +70,7 @@ $mobile-small: 320px - 1px;
         font-size: 46px;
         transition-duration: 0.3s;
         color: #c6ae9e;
+        font-family: 'Tourney', cursive;
         &:hover{
           color: coral;
         }
@@ -80,30 +81,23 @@ $mobile-small: 320px - 1px;
     }
   }
   .BAZA{
-    display: flex;
+    display: none;
     width: 290px;
     height: 65px;
     align-items: end;
     justify-content: end;
     font-family: 'Square Peg', cursive;
     font-size: 32px;
-    transition-duration: 1s;
-    transition-property: color;
+    transition-duration: 0.1s;
 
-    color: burlywood;
-    &:hover{
-      color: #998265;
-    }
-    @include media-laptop{
-      &:active{
-        color: #998265;
-      }
-    }
+    color: #998265;
   }
 }
 
 .btn{
-  font-weight:bold;
+  font-family: 'Tourney', cursive;
+  font-weight: 900;
+  //font-weight:bold;
   box-shadow: 1px 2px 0 #3c354a;
   transition-duration: 0.2s;
 
@@ -128,6 +122,7 @@ $mobile-small: 320px - 1px;
   &:active{
     filter: brightness(90%);
     box-shadow: inset 0.1px 0.2px #3c354a;
+    font-size: 1.2rem;
   }
   &.orange__font{
     background: coral;

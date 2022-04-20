@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Square+Peg&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tourney:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tourney:wght@900&display=swap");
 * body {
   background: beige;
 }
 
 .calc {
-  box-shadow: 5px 4px 3px #3c354a;
+  box-shadow: 8px 6px 3px #3c354a;
   margin: 50px auto;
   width: 300px;
   height: 480px;
@@ -33,6 +35,8 @@
   margin-top: 10px;
   color: #998265;
   margin-left: 13px;
+  font-family: "Tourney", cursive;
+  font-weight: 900;
 }
 .calc .screen .screen__bottom {
   display: flex;
@@ -43,6 +47,7 @@
   font-size: 46px;
   transition-duration: 0.3s;
   color: #c6ae9e;
+  font-family: "Tourney", cursive;
 }
 .calc .screen .screen__bottom .modal__screen:hover {
   color: coral;
@@ -51,28 +56,20 @@
   color: #333333;
 }
 .calc .BAZA {
-  display: flex;
+  display: none;
   width: 290px;
   height: 65px;
   align-items: end;
   justify-content: end;
   font-family: "Square Peg", cursive;
   font-size: 32px;
-  transition-duration: 1s;
-  transition-property: color;
-  color: burlywood;
-}
-.calc .BAZA:hover {
+  transition-duration: 0.1s;
   color: #998265;
-}
-@media (max-width: 1023px) {
-  .calc .BAZA:active {
-    color: #998265;
-  }
 }
 
 .btn {
-  font-weight: bold;
+  font-family: "Tourney", cursive;
+  font-weight: 900;
   box-shadow: 1px 2px 0 #3c354a;
   transition-duration: 0.2s;
   width: 55px;
@@ -98,6 +95,7 @@
 .btn:active {
   filter: brightness(90%);
   box-shadow: inset 0.1px 0.2px #3c354a;
+  font-size: 1.2rem;
 }
 .btn.orange__font {
   background: coral;

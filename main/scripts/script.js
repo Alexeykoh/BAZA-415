@@ -2,6 +2,7 @@ let a = ''; // первое число
 let b = ''; // второе число
 let sign = ''; // параметр
 let finish = false; // итог
+let version = 'BAZA-415 v0.5' // версия
 
 const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']; //список цифр
 const action = ['-', '+', 'x', '/']; // список параметров
@@ -19,7 +20,7 @@ function allClear () {
     sign = '';
     finish = false;
     out.textContent = 0;
-    context.textContent = '_';
+    context.textContent = version;
     console.log('all clear');
 }
 
@@ -57,7 +58,7 @@ document.querySelector('.modal__screen').onclick = remNumber;
 document.querySelector('.buttons').onclick = (event) => {
     if (!event.target.classList.contains('btn')) return;
     if (event.target.classList.contains('ac')) return;
-    if (event.target.classList.contains('percent')) return;
+    // if (event.target.classList.contains('percent')) return;
     // if (event.target.classList.contains('p-m')) return;
 
     out.textContent = '';
@@ -89,15 +90,47 @@ document.querySelector('.buttons').onclick = (event) => {
         }
     }
 
+    // Спец. параметры
     if (special.includes(key)) {
-        if (a !== '' && b === ""){
-            a = a * -1
-            out.textContent = a;
+        if (key === "+/-"){
+            if (a !== '' && b === ""){
+                a = a * -1
+                out.textContent = a;
+            }
+            if (a !== '' && b !== ""){
+                b = b * -1
+                out.textContent = b;
+            }
         }
-        if (a !== '' && b !== ""){
-            b = b * -1
-            out.textContent = b;
+
+        if (key === '%'){
+            if (a ==='' || b === ""){
+                allClear();
+            }
+            if(a !== '' && b === ''){
+                if(sign === ''){
+                    a = a / 100
+                    out.textContent = a;
+                }
+            }
+
+            if(a !== '' && b !== ''){
+                if(sign === '+' || sign === '-'){
+                    // out.textContent = '+ %';
+                    b = (a / 100) * b;
+                    out.textContent = b;
+                }
+
+                if(sign === 'x' || sign === '/'){
+                    b = b / 100;
+                    out.textContent = b;
+                }
+            }
+
+
+
         }
+
         context.textContent = a+" "+sign+" "+b;
     }
 
