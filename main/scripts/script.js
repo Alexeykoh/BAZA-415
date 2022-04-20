@@ -4,7 +4,7 @@ let sign = '';
 let finish = false;
 
 const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
-const action = ['-', '+', 'X', '/'];
+const action = ['-', '+', 'x', '/'];
 // const special = ['+/-', '%'];
 
 
@@ -112,7 +112,7 @@ document.querySelector('.buttons').onclick = (event) => {
                 break;
         }
         switch (sign){
-            case 'X':
+            case 'x':
                 result = (a) * (b)
                 break;
         }
@@ -135,9 +135,11 @@ document.querySelector('.buttons').onclick = (event) => {
         } else{out.textContent = result}
 
         console.log( a, sign, b, ' - result: ', result, finish)
-        a = result;
 
+        a = result;
         b = '';
+        sign = '';
+
         context.textContent = a+" "+sign;
     }
 }
