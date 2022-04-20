@@ -1,17 +1,18 @@
-let a = '';
-let b = '';
-let sign = '';
-let finish = false;
+let a = ''; // первое число
+let b = ''; // второе число
+let sign = ''; // параметр
+let finish = false; // итог
 
-const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
-const action = ['-', '+', 'x', '/'];
-// const special = ['+/-', '%'];
+const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']; //список цифр
+const action = ['-', '+', 'x', '/']; // список параметров
+const special = ['+/-', '%']; // специальные параметры
 
 
-//screen
+//screen. Dывод на экран
 const out = document.querySelector('.screen .modal__screen');
 const context = document.querySelector('.screen .context__screen');
 
+// функция очистки
 function allClear () {
     a = '';
     b = '';
@@ -21,6 +22,8 @@ function allClear () {
     context.textContent = '_';
     console.log('all clear');
 }
+
+// функция памяти
 function remNumber () {
     a = a.toString()
     b = b.toString()
@@ -49,11 +52,13 @@ function remNumber () {
 document.querySelector('.ac').onclick = allClear;
 document.querySelector('.modal__screen').onclick = remNumber;
 
+
+// стрелочная функция для кнопок
 document.querySelector('.buttons').onclick = (event) => {
     if (!event.target.classList.contains('btn')) return;
     if (event.target.classList.contains('ac')) return;
     if (event.target.classList.contains('percent')) return;
-    if (event.target.classList.contains('p-m')) return;
+    // if (event.target.classList.contains('p-m')) return;
 
     out.textContent = '';
     const key = event.target.textContent;
@@ -84,9 +89,17 @@ document.querySelector('.buttons').onclick = (event) => {
         }
     }
 
-    // if (special.includes(key)) {
-    //     out.textContent = 0;
-    //     }
+    if (special.includes(key)) {
+        if (a !== '' && b === ""){
+            a = a * -1
+            out.textContent = a;
+        }
+        if (a !== '' && b !== ""){
+            b = b * -1
+            out.textContent = b;
+        }
+        context.textContent = a+" "+sign+" "+b;
+    }
 
     if (action.includes(key)) {
         sign = key;
