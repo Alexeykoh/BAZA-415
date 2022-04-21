@@ -26,7 +26,7 @@ $mobile-small: 320px - 1px;
 
 *body{
   //background: beige;
-  background: linear-gradient(-90deg, beige, #998265, #9f5033, #333333);
+  background: linear-gradient(-90deg, beige, #998265, cadetblue, #333333);
   background-size: 400% 400%;
   animation: gradient 60s ease infinite;
   @keyframes gradient {
