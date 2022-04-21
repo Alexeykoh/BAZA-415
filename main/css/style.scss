@@ -25,7 +25,21 @@ $mobile-small: 320px - 1px;
 
 
 *body{
-  background: beige;
+  //background: beige;
+  background: linear-gradient(-90deg, beige, #998265, #9f5033, #333333);
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite;
+  @keyframes gradient {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
 }
 
 .calc{
@@ -49,7 +63,10 @@ $mobile-small: 320px - 1px;
   border: gray;
   .screen{
     box-shadow: inset 2px 2px #998265;
+
     background: #333333;
+
+
     border-radius: 10px;
     margin-bottom: 26px;
     grid-auto-flow: column;
