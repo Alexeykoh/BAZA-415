@@ -2,7 +2,7 @@ let a = ''; // первое число
 let b = ''; // второе число
 let sign = ''; // параметр
 let finish = false; // итог
-let version = 'BAZA-415 v0.5' // версия
+let version = 'BAZA-415 v0.6' // версия
 
 const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']; //список цифр
 const action = ['-', '+', 'x', '/']; // список параметров
@@ -24,7 +24,7 @@ function allClear () {
     console.log('all clear');
 }
 
-// функция памяти
+// функция удаления символов
 function remNumber () {
     a = a.toString()
     b = b.toString()
@@ -58,13 +58,19 @@ document.querySelector('.modal__screen').onclick = remNumber;
 document.querySelector('.buttons').onclick = (event) => {
     if (!event.target.classList.contains('btn')) return;
     if (event.target.classList.contains('ac')) return;
-    // if (event.target.classList.contains('percent')) return;
-    // if (event.target.classList.contains('p-m')) return;
 
     out.textContent = '';
     const key = event.target.textContent;
 
     if (digit.includes(key)) {
+        if (doubleZero(a, key)){
+            return;
+        }
+        if (doubleZero(b, key)){
+            return;
+        }
+
+
         if ( b === '' && sign === ''){
             if (a.length <= 10 ){
                 a += key;
@@ -73,7 +79,8 @@ document.querySelector('.buttons').onclick = (event) => {
             context.textContent = a+" "+sign+" "+b;
             console.log(a+" "+sign+" "+b+" "+finish)
         }
-        else if (a !== '' && b !== '' && finish){
+        else
+            if (a !== '' && b !== '' && finish){
             b += key;
             finish = false
             out.textContent = b;
@@ -93,24 +100,27 @@ document.querySelector('.buttons').onclick = (event) => {
     // Спец. параметры
     if (special.includes(key)) {
         if (key === "+/-"){
+            if (a === '' || b === ''){
+                out.textContent = 0;
+            }
             if (a !== '' && b === ""){
                 a = a * -1
-                out.textContent = a;
+                screenOut(a);
             }
             if (a !== '' && b !== ""){
                 b = b * -1
-                out.textContent = b;
+                screenOut(b);
             }
         }
 
         if (key === '%'){
-            if (a ==='' || b === ""){
-                allClear();
+            if (a === '' || b === ''){
+                out.textContent = 0;
             }
             if(a !== '' && b === ''){
                 if(sign === ''){
                     a = a / 100
-                    out.textContent = a;
+                    screenOut(a);
                 }
             }
 
@@ -118,20 +128,20 @@ document.querySelector('.buttons').onclick = (event) => {
                 if(sign === '+' || sign === '-'){
                     // out.textContent = '+ %';
                     b = (a / 100) * b;
-                    out.textContent = b;
+                    screenOut(b);
                 }
 
                 if(sign === 'x' || sign === '/'){
                     b = b / 100;
-                    out.textContent = b;
+                    screenOut(b);
                 }
             }
-
-
-
         }
-
+        if (a === '' || b === ''){
+            context.textContent = key;
+        } else {
         context.textContent = a+" "+sign+" "+b;
+        }
     }
 
     if (action.includes(key)) {
@@ -141,8 +151,12 @@ document.querySelector('.buttons').onclick = (event) => {
         return;
     }
 
-    //calc
+    //calc result
     if (key === '='){
+        if (sign === ''){
+            out.textContent = '=';
+            return;
+        }
         if (a === '' || b === ''){
             out.textContent = 0;
             return;
@@ -176,16 +190,28 @@ document.querySelector('.buttons').onclick = (event) => {
                 }
         }
         finish = true;
-        if (result.toString().length >= 10){
-            out.textContent = (result.toString().substring(0, 10)+"...")
-        } else{out.textContent = result}
-
-        console.log( a, sign, b, ' - result: ', result, finish)
+        screenOut(result);
 
         a = result;
         b = '';
         sign = '';
 
         context.textContent = a+" "+sign;
+    }
+}
+
+// функция вывода на экран
+function screenOut (scResult) {
+    if (scResult.toString().length >= 10){
+        out.textContent = (scResult.toString().substring(0, 10)+"...")
+    } else{out.textContent = scResult}
+}
+
+// двойной ноль
+function doubleZero (zero, key){
+    if (zero === '0' && key === '0'){
+        console.log('A - zero kek');
+        out.textContent = zero;
+        return true;
     }
 }

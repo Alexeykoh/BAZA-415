@@ -12,7 +12,7 @@ $mobile-small: 320px - 1px;
 
 //Queries
 @mixin media-laptop {
-  @media (max-width: $content-width) {@content}
+  @media (min-width: $content-width) {@content}
 }
 @mixin media-tablet {
   @media (max-width: $tablet-width) {@content}
@@ -30,8 +30,15 @@ $mobile-small: 320px - 1px;
 
 .calc{
   box-shadow: 8px 6px 3px #3c354a;
+  @include media-laptop {
+    &:hover{
+      margin: 48px auto;
+      box-shadow: 10px 13px 3px #3c354a;
+    }
+  }
 
-  margin: 50px auto;
+  transition-duration: 0.2s;
+  margin: 60px auto;
   width: 300px;
   height: 480px;
   background: burlywood;
@@ -99,7 +106,7 @@ $mobile-small: 320px - 1px;
   font-weight: 900;
   //font-weight:bold;
   box-shadow: 1px 2px 0 #3c354a;
-  transition-duration: 0.2s;
+  transition-duration: 0.05s;
 
   width: 55px;
   height: 55px;
@@ -110,10 +117,7 @@ $mobile-small: 320px - 1px;
   border-radius: 100px;
   font-size: 1.5rem;
   &:hover{
-    filter: brightness(130%);
-    @include media-laptop{
-      filter: brightness(100%);
-    }
+    filter: brightness(105%);
     font-size: 1.6rem;
     color: lightgoldenrodyellow;
     //box-shadow: 1px 1px 0 #3c354a;

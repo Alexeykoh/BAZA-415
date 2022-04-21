@@ -8,7 +8,8 @@
 
 .calc {
   box-shadow: 8px 6px 3px #3c354a;
-  margin: 50px auto;
+  transition-duration: 0.2s;
+  margin: 60px auto;
   width: 300px;
   height: 480px;
   background: burlywood;
@@ -17,6 +18,12 @@
   font-family: "Roboto", serif;
   padding: 18px;
   border: gray;
+}
+@media (min-width: 1023px) {
+  .calc:hover {
+    margin: 48px auto;
+    box-shadow: 10px 13px 3px #3c354a;
+  }
 }
 .calc .screen {
   box-shadow: inset 2px 2px #998265;
@@ -71,7 +78,7 @@
   font-family: "Tourney", cursive;
   font-weight: 900;
   box-shadow: 1px 2px 0 #3c354a;
-  transition-duration: 0.2s;
+  transition-duration: 0.05s;
   width: 55px;
   height: 55px;
   background-color: cadetblue;
@@ -82,15 +89,10 @@
   font-size: 1.5rem;
 }
 .btn:hover {
-  filter: brightness(130%);
+  filter: brightness(105%);
   font-size: 1.6rem;
   color: lightgoldenrodyellow;
   cursor: pointer;
-}
-@media (max-width: 1023px) {
-  .btn:hover {
-    filter: brightness(100%);
-  }
 }
 .btn:active {
   filter: brightness(90%);
