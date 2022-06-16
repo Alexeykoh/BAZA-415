@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Tourney:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tourney:wght@900&display=swap");
 * body {
+  user-select: none;
   background: linear-gradient(-90deg, #998265, beige, cadetblue, #333333);
   background-size: 400% 400%;
   animation: gradient 60s ease infinite;
@@ -31,12 +32,6 @@
   font-family: "Roboto", serif;
   padding: 18px;
   border: gray;
-}
-@media (min-width: 1023px) {
-  .calc:hover {
-    margin: 48px auto;
-    box-shadow: 10px 13px 3px #3c354a;
-  }
 }
 .calc .screen {
   box-shadow: inset 2px 2px #998265;

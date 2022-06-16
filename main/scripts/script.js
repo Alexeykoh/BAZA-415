@@ -19,7 +19,7 @@ function allClear () {
     b = '';
     sign = '';
     finish = false;
-    out.textContent = 0;
+    out.textContent = '0';
     context.textContent = version;
     console.log('all clear');
 }
@@ -101,7 +101,7 @@ document.querySelector('.buttons').onclick = (event) => {
     if (special.includes(key)) {
         if (key === "+/-"){
             if (a === '' || b === ''){
-                out.textContent = 0;
+                out.textContent = '0';
             }
             if (a !== '' && b === ""){
                 a = a * -1
@@ -115,7 +115,7 @@ document.querySelector('.buttons').onclick = (event) => {
 
         if (key === '%'){
             if (a === '' || b === ''){
-                out.textContent = 0;
+                out.textContent = '0';
             }
             if(a !== '' && b === ''){
                 if(sign === ''){
@@ -140,7 +140,8 @@ document.querySelector('.buttons').onclick = (event) => {
         if (a === '' || b === ''){
             context.textContent = key;
         } else {
-        context.textContent = a+" "+sign+" "+b;
+        // context.textContent = a+" "+sign+" "+b;
+        contextOut(a,sign,b)
         }
     }
 
@@ -158,7 +159,7 @@ document.querySelector('.buttons').onclick = (event) => {
             return;
         }
         if (a === '' || b === ''){
-            out.textContent = 0;
+            out.textContent = '0';
             return;
         }
         switch (sign){
@@ -180,8 +181,8 @@ document.querySelector('.buttons').onclick = (event) => {
             case '/':
                 if (b === 0 || b === '' || b === '0'){
                     console.log('govno', finish)
-                    out.textContent = 0;
-                    context.textContent = 0;
+                    out.textContent = '0';
+                    context.textContent = '0';
                     result = 0;
                     break;
                 } else {
@@ -196,16 +197,48 @@ document.querySelector('.buttons').onclick = (event) => {
         b = '';
         sign = '';
 
-        context.textContent = a+" "+sign;
+        // context.textContent = a+" "+sign;
+        contextOut(a,sign,b)
     }
 }
 
+
+
+// ===========================================
 // функция вывода на экран
+
+// вывод на главный экран
 function screenOut (scResult) {
     if (scResult.toString().length >= 10){
-        out.textContent = (scResult.toString().substring(0, 10)+"...")
+        out.textContent = (scResult.toFixed(6).toString().substring(0, 10)+"...")
     } else{out.textContent = scResult}
 }
+
+// вывод на экран выражения
+function contextOut (a, sign, b) {
+    let a_context;
+    let b_context;
+    let sign_context;
+
+
+    if (a.toString().length >= 10){
+        a_context = (a.toFixed(6).toString().substring(0, 10)+"...")
+    } else{a_context = a}
+
+    if (b.toString().length >= 10){
+        b_context = (b.toFixed(6).toString().substring(0, 10)+"...")
+    } else{b_context = b}
+
+    sign_context = sign;
+
+    console.log('debug: a:(', a_context,') sign:(', sign_context, ') b:(', b_context,')')
+    context.textContent = a_context+" "+sign_context+" "+b_context;
+}
+
+
+
+// ===========================================
+// ПРОВЕРКИ
 
 // двойной ноль
 function doubleZero (zero, key){

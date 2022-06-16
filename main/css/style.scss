@@ -25,6 +25,8 @@ $mobile-small: 320px - 1px;
 
 
 *body{
+  //
+  user-select: none;
   //background: beige;
   background: linear-gradient(-90deg, #998265, beige, cadetblue, #333333);
   background-size: 400% 400%;
@@ -44,12 +46,6 @@ $mobile-small: 320px - 1px;
 
 .calc{
   box-shadow: 8px 6px 3px #3c354a;
-  @include media-laptop {
-    &:hover{
-      margin: 48px auto;
-      box-shadow: 10px 13px 3px #3c354a;
-    }
-  }
 
   transition-duration: 0.2s;
   margin: 60px auto;
@@ -137,7 +133,6 @@ $mobile-small: 320px - 1px;
     filter: brightness(105%);
     font-size: 1.6rem;
     color: lightgoldenrodyellow;
-    //box-shadow: 1px 1px 0 #3c354a;
     cursor: pointer;
   }
   &:active{
